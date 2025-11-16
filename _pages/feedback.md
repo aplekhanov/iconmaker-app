@@ -169,7 +169,7 @@ include_in_header: false
     <script>
         // Get URL parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const campaignId = urlParams.get('campaignId') || 'feedback_2024';
+        const campaignId = urlParams.get('campaignId') || 'feedback_test';
         const isPlusUser = urlParams.get('isPlusUser') === 'true';
         const userId = urlParams.get('userId');
         
@@ -214,7 +214,7 @@ include_in_header: false
             // Auto-dismiss after 2 seconds
             setTimeout(() => {
                 sendToApp({
-                    type: 'dismissed',
+                    type: 'submitted',
                     campaignId: campaignId
                 });
             }, 2000);
@@ -222,10 +222,12 @@ include_in_header: false
         
         // Handle dismiss button
         function dismiss() {
-            sendToApp({
-                type: 'dismissed',
-                campaignId: campaignId
-            });
+            setTimeout(() => {
+                sendToApp({
+                    type: 'dismissed',
+                    campaignId: campaignId
+                });
+            }, 1000);
         }
     </script>
 </body>
